@@ -1,8 +1,6 @@
-import { password } from 'bun';
 import { Hono } from 'hono';
 import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
-import { email } from 'zod/v4';
 
 export const authRouter = new Hono();
 
