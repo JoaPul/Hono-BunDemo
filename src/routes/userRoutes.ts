@@ -1,3 +1,6 @@
+// TEST ROUTS, not neet do be on real
+
+
 import { Hono } from 'hono'
 import { User } from '../models/userModel'
 
