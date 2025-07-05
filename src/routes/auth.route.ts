@@ -4,6 +4,7 @@ import { zValidator } from '@hono/zod-validator';
 import bcrypt from 'bcryptjs'
 import { User } from '../models/userModel';
 import { Jwt } from 'hono/utils/jwt';
+import 'dotenv/config'
 
 export const authRouter = new Hono();
 
@@ -57,8 +58,6 @@ authRouter.post('/login',
         // get the user data from body
         const { email, password } = await c.req.json()
 
-        // validate the user data
-
         // verify that the user is in the data base
         const user = await User.findOne({ email })
         if (!user) {
@@ -71,7 +70,7 @@ authRouter.post('/login',
             return c.json({ error: 'Invalid email or password' }, 401)
         }
 
-        // TODO: Generate JWT here
+        // Generate JWT here
         const token = await Jwt.sign(
             {
                 userId: user._id.toString(),
